@@ -46,10 +46,7 @@ public class AuldArena_FloorWaypoints : MonoBehaviour {
 		{
 
 			currentWaypoint = GameObject.Instantiate (waypointPrefab, waypointsOrigin + new Vector3 (waypointUnitSize * waypoints, 0.0f, 0.0f), Quaternion.identity) as GameObject;
-			// xxx Attempted to access the WaypointSelection.cs of each currentWaypoint to set the IDs as they spawned - but kept getting reference to instance of object errors.
-			// xxx Need to set those IDs somehow.
-
-			Debug.Log ("Waypoint ID number " + " has been assigned.");
+			currentWaypoint.SendMessage ("SetWaypointID", waypoints + 1, SendMessageOptions.RequireReceiver);
 		}
 	}
 }
