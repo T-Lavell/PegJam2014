@@ -5,6 +5,7 @@ TagManager:
   tags:
   - Warrior
   - Item
+  - Waypoint
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

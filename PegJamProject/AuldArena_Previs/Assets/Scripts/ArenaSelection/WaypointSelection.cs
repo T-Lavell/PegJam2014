@@ -14,10 +14,16 @@ public class WaypointSelection : MonoBehaviour {
 	[HideInInspector]
 	public int waypointID = -1;
 
+	private TextMesh _textMesh;
+	private float unselectedLetterSize;
+	private float selectedLetterSize;
+
 	// Use this for initialization
 	void Start () 
 	{
-		
+		_textMesh = gameObject.GetComponent<TextMesh>();
+		unselectedLetterSize = _textMesh.characterSize;
+		selectedLetterSize = unselectedLetterSize * 2.0f;
 	}
 	
 	// Update is called once per frame
@@ -26,9 +32,19 @@ public class WaypointSelection : MonoBehaviour {
 		
 	}
 
+	void Selected()
+	{
+		_textMesh.characterSize = selectedLetterSize;
+	}
+	void NotSelected()
+	{
+		_textMesh.characterSize = unselectedLetterSize;
+	}
+
 	// The arenaFloorWaypoints script will assign an ID to each waypoint as it instantiates them.
 	public void SetWaypointID(int newID)
 	{
 		waypointID = newID;
+		// Debug.Log ("Waypoint ID number " + newID.ToString () + " has been instantiated.");
 	}
 }

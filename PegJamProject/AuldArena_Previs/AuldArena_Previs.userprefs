@@ -1,8 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ArenaSelection\WaypointSelection.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AuldArena_CombatController.cs">
     <Files>
-      <File FileName="Assets\Scripts\ArenaSelection\WaypointSelection.cs" Line="14" Column="19" />
+      <File FileName="Assets\Scripts\StateControl\HumMale_StateChanger.cs" Line="46" Column="2" />
+      <File FileName="Assets\Scripts\AuldArena_CombatController.cs" Line="194" Column="31" />
+      <File FileName="Assets\Scripts\ArenaSelection\WaypointSelection.cs" Line="6" Column="128" />
+      <File FileName="Assets\Scripts\GUIcontroller.cs" Line="23" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -48,7 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\ArenaSelection\WaypointSelection.cs" />
      <Compile Include="Assets\Scripts\AuldArena_CombatController.cs" />
-     <Compile Include="Assets\Scripts\AuldArena_FloorWaypoints.cs" />
+     <Compile Include="Assets\Scripts\GUIcontroller.cs" />
      <Compile Include="Assets\Scripts\StateControl\HumMale_StateChanger.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

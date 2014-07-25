@@ -3,16 +3,30 @@ using System.Collections;
 
 public class HumMale_StateChanger : MonoBehaviour {
 
+	/// The ID of each 'warrior' will be used to ensure the correct messages are being send & received over the network.
+	private int warriorID = -1;
+
 	/// <summary>
 	/// 	This represents which of the [noOfStates] states the gameObject should be in.
 	/// </summary>
 	public int state = 1;
-	private int stateWas = 1;
+	// private int stateWas = 1;
 	public int noOfStates = 21;
 
 	public bool facingRight = true;
 
+	// [HideInInspector]
+	public int timesHit;
+	// [HideInInspector]
+	public int timesCut;
+	// [HideInInspector]
+	public bool isAlive = true;
+	public bool isToppled = false;
+	public int mobility = 6;
+
 	private Animator _animator;
+
+
 
 	// Use this for initialization
 	void Start () 
@@ -20,21 +34,33 @@ public class HumMale_StateChanger : MonoBehaviour {
 		_animator = gameObject.GetComponent<Animator>();
 	}
 
+	// When each warrior is spawned, their IDs will be set via SendMessage().
+	public void SetWarriorID(int newID)
+	{
+		warriorID = newID;
+	}
+	public void SetName(string newName)
+	{
+		gameObject.name = newName;
+	}
+
 	// Set "facing" from an external script with this function.
 	[RPC]
-	void SetFacingRight(bool _facingRight)
+	public void SetFacingRight(bool _facingRight)
 	{
 		facingRight = _facingRight;
+		UpdateFacing ();
 	}
 	// Set the state from an external script with this function.
 	[RPC]
-	void SetState(int _state)
+	public void SetState(int _state)
 	{
 		state = _state;
+		_animator.SetInteger("State", state);
 	}
 	// Set the transform location with this function.
 	[RPC]
-	void SetLocation(Vector3 _location)
+	public void SetLocation(Vector3 _location)
 	{
 		transform.position = _location;
 	}
@@ -42,38 +68,7 @@ public class HumMale_StateChanger : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		UpdateFacing();
-	
-		stateWas = state;
 
-		if (Input.GetButtonDown ("Fire1"))
-		{
-			state++;
-		}
-		if (Input.GetButtonDown ("Jump"))
-		{
-			state--;
-		}
-
-
-
-		// This bit serves to loop between the earlier and later states.
-		if (state > noOfStates)
-		{
-			state = 1;
-		}
-		else if (state < 1)
-		{
-			state = noOfStates;
-		}
-
-		// Print the state number only if it has been changed this frame.
-		if (state != stateWas)
-		{
-			// print ("State changed to number " + state.ToString ());
-		}
-
-		_animator.SetInteger("State", state);
 	}
 
 	void UpdateFacing()
@@ -87,4 +82,6 @@ public class HumMale_StateChanger : MonoBehaviour {
 			transform.localScale = new Vector3 (-1.0f, 1.0f, 1.0f);
 		}
 	}
+	
+
 }
